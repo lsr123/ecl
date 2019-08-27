@@ -1,7 +1,7 @@
 /****************************************************************************
  *
  *   Copyright (c) 2013 Estimation and Control Library (ECL). All rights reserved.
- *
+ * lsr
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
