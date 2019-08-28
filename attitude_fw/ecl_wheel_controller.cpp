@@ -52,6 +52,11 @@ ECL_WheelController::ECL_WheelController() :
 {
 }
 
+float ECL_WheelController::ADRC_control(const struct ECL_ControlData &ctl_data,float W_U)
+{
+    return 0;
+}
+
 float ECL_WheelController::control_bodyrate(const struct ECL_ControlData &ctl_data)
 {
 	/* Do not calculate control signal with bad inputs */
@@ -136,4 +141,12 @@ float ECL_WheelController::control_attitude(const struct ECL_ControlData &ctl_da
 	}
 
 	return _rate_setpoint;
+}
+
+float ECL_WheelController::signal_PID_control(const struct ECL_ControlData &ctl_data)
+{
+	
+	//warnx("ADRC_data[0] = %.8f\n", (double)ADRC_data[0]);
+	return 0.0f;
+
 }

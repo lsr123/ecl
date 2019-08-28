@@ -64,6 +64,18 @@ public:
 	float control_attitude(const struct ECL_ControlData &ctl_data);
 	float control_euler_rate(const struct ECL_ControlData &ctl_data);
 	float control_bodyrate(const struct ECL_ControlData &ctl_data);
+	float ADRC_control(const struct ECL_ControlData &ctl_data, float a);
+	float signal_PID_control(const struct ECL_ControlData &ctl_data);
+	
+
+	void P_LESO(const struct ECL_ControlData &ctl_data, float P_U, float dtime);
+	void P_NESO(const struct ECL_ControlData &ctl_data, float P_U, float dtime);
+	void P_TD(const struct ECL_ControlData &ctl_data, float dtime);
+	float P_ADRC_PD(void);
+	float P_ADRC_NLF(float dtime);
+	float P_fhan(float x1,float x2,float r,float h);
+	float P_fal(float e,float alpha,float delta);
+	float sign(float x);
 
 	/* Additional Setters */
 	void set_max_rate_pos(float max_rate_pos)

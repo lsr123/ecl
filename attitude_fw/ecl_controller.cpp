@@ -63,7 +63,23 @@ ECL_Controller::ECL_Controller(const char *name) :
 	_integrator(0.0f),
 	_rate_error(0.0f),
 	_rate_setpoint(0.0f),
-	_bodyrate_setpoint(0.0f)
+	_bodyrate_setpoint(0.0f),
+
+	_timestep(0.01f),
+	_s(20.0f),
+	_r(30.0f),
+	_bd(10.0f),
+	_adrc_lamda(1.0f),
+	_adrc_alpha(1.0f),
+	_adrc_b0(1.0f),
+	_adrc_bt1(1.0f),
+	_adrc_bt2(1.0f),
+	_adrc_bt3(1.0f),
+	_p(1.0f),
+	_d(1.0f),
+	_signal_p(0.1f),
+	_signal_d(0.1f)
+
 {
 }
 
@@ -137,4 +153,65 @@ float ECL_Controller::constrain_airspeed(float airspeed, float minspeed, float m
 	}
 
 	return airspeed_result;
+}
+
+
+void ECL_Controller::set_timestep(float timestep)
+{
+	_timestep = timestep;
+}
+void ECL_Controller::set_s(float s)
+{
+	_s = s;
+}
+void ECL_Controller::set_r(float r)
+{
+	_r = r;
+}
+void ECL_Controller::set_bd(float bd)
+{
+	_bd = bd;
+}
+void ECL_Controller::set_adrc_lamda(float adrc_lamda)
+{
+	_adrc_lamda = adrc_lamda;
+}
+void ECL_Controller::set_adrc_alpha(float adrc_alpha)
+{
+	_adrc_alpha = adrc_alpha;
+}
+void ECL_Controller::set_adrc_b0(float adrc_b0)
+{
+	_adrc_b0 = adrc_b0;
+}
+
+void ECL_Controller::set_adrc_bt1(float adrc_bt1)
+{
+	_adrc_bt1 = adrc_bt1;
+}
+void ECL_Controller::set_adrc_bt2(float adrc_bt2)
+{
+	_adrc_bt2 = adrc_bt2;
+}
+void ECL_Controller::set_adrc_bt3(float adrc_bt3)
+{
+	_adrc_bt3 = adrc_bt3;
+}
+
+void ECL_Controller::set_p(float p)
+{
+	_p = p;
+}
+void ECL_Controller::set_d(float d)
+{
+	_d = d;
+}
+void ECL_Controller::set_signal_p(float signal_p)
+{
+	_signal_p = signal_p;
+}
+
+void ECL_Controller::set_signal_d(float signal_d)
+{
+	_signal_d = signal_d;
 }

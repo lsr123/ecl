@@ -63,7 +63,8 @@ public:
 	float control_attitude(const struct ECL_ControlData &ctl_data);
 	float control_euler_rate(const struct ECL_ControlData &ctl_data);
 	float control_bodyrate(const struct ECL_ControlData &ctl_data);
-
+	float ADRC_control(const struct ECL_ControlData &ctl_data,float a);
+	float signal_PID_control(const struct ECL_ControlData &ctl_data);
 	/* Additional setters */
 	void set_coordinated_min_speed(float coordinated_min_speed)
 	{

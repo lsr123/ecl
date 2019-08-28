@@ -55,6 +55,11 @@ ECL_YawController::ECL_YawController() :
 {
 }
 
+float ECL_YawController::ADRC_control(const struct ECL_ControlData &ctl_data,float Y_U)
+{
+	return 0;
+}
+
 float ECL_YawController::control_attitude(const struct ECL_ControlData &ctl_data)
 {
 	switch (_coordinated_method) {
@@ -219,5 +224,12 @@ float ECL_YawController::control_euler_rate(const struct ECL_ControlData &ctl_da
 			     cosf(ctl_data.roll) * cosf(ctl_data.pitch) * _rate_setpoint;
 
 	return control_bodyrate(ctl_data);
+
+}
+float ECL_YawController::signal_PID_control(const struct ECL_ControlData &ctl_data)
+{
+	
+	//warnx("ADRC_data[0] = %.8f\n", (double)ADRC_data[0]);
+	return 0.0f;
 
 }

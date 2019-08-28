@@ -52,6 +52,11 @@ ECL_RollController::ECL_RollController() :
 {
 }
 
+float ECL_RollController::ADRC_control(const struct ECL_ControlData &ctl_data,float R_U)
+{
+	return 0;
+}
+
 float ECL_RollController::control_attitude(const struct ECL_ControlData &ctl_data)
 {
 	/* Do not calculate control signal with bad inputs */
@@ -143,3 +148,10 @@ float ECL_RollController::control_euler_rate(const struct ECL_ControlData &ctl_d
 
 }
 
+float ECL_RollController::signal_PID_control(const struct ECL_ControlData &ctl_data)
+{
+	
+	//warnx("ADRC_data[0] = %.8f\n", (double)ADRC_data[0]);
+	return 0.0f;
+
+}

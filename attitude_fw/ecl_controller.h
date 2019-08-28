@@ -1,7 +1,7 @@
 /****************************************************************************
  *
  *   Copyright (c) 2013 Estimation and Control Library (ECL). All rights reserved.
- * lsr
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
@@ -83,7 +83,8 @@ public:
 	virtual float control_attitude(const struct ECL_ControlData &ctl_data) = 0;
 	virtual float control_euler_rate(const struct ECL_ControlData &ctl_data) = 0;
 	virtual float control_bodyrate(const struct ECL_ControlData &ctl_data) = 0;
-
+	virtual float ADRC_control(const struct ECL_ControlData &ctl_data, float a) = 0;
+	virtual float signal_PID_control(const struct ECL_ControlData &ctl_data) = 0;
 	/* Setters */
 	void set_time_constant(float time_constant);
 	void set_k_p(float k_p);
@@ -92,6 +93,21 @@ public:
 	void set_integrator_max(float max);
 	void set_max_rate(float max_rate);
 	void set_bodyrate_setpoint(float rate) {_bodyrate_setpoint = rate;}
+
+	void set_timestep(float timestep);
+	void set_s(float s);
+	void set_r(float r);
+	void set_bd(float bd);
+	void set_adrc_lamda(float adrc_lamda);
+	void set_adrc_alpha(float adrc_alpha);
+	void set_adrc_b0(float adrc_b0);
+	void set_adrc_bt1(float adrc_bt1);
+	void set_adrc_bt2(float adrc_bt2);
+	void set_adrc_bt3(float adrc_bt3);
+	void set_p(float p);
+	void set_d(float d);
+	void set_signal_p(float signal_p);
+	void set_signal_d(float signal_d);
 
 	/* Getters */
 	float get_rate_error();
@@ -115,4 +131,19 @@ protected:
 	float _rate_setpoint;
 	float _bodyrate_setpoint;
 	float constrain_airspeed(float airspeed, float minspeed, float maxspeed);
+
+	float _timestep;
+	float _s;
+	float _r;
+	float _bd;
+	float _adrc_lamda;
+	float _adrc_alpha;
+	float _adrc_b0;
+	float _adrc_bt1;
+	float _adrc_bt2;
+	float _adrc_bt3;
+	float _p;
+	float _d;
+	float _signal_p;
+	float _signal_d;
 };
