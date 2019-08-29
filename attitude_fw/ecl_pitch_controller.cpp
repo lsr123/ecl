@@ -167,10 +167,13 @@ float ECL_PitchController::ADRC_control(const struct ECL_ControlData &ctl_data, 
 	struct ADRC_s ADRC_log;
 	static uint64_t last_run = 0;
 	float deltaT = (hrt_absolute_time() - last_run) / 1000000.0f;
+
 	last_run = hrt_absolute_time();
 
+	//if(deltaT>0.5f)
+	//	deltaT = 0.0125f;
 	//sleep(2);
-	//printf(" sss = %8.6f\n",(double)deltaT );
+	//printf(" deltaT = %8.6f\n",(double)deltaT );
 	//不接遥控器时，指令值为0,,there is no outer loop
 	//printf(" pitch = %8.6f\n",(double)ctl_data.pitch);
 
@@ -187,6 +190,7 @@ float ECL_PitchController::ADRC_control(const struct ECL_ControlData &ctl_data, 
 	orb_advert_t ADRC_sub = orb_advertise(ORB_ID(ADRC), &ADRC_log);   //公告主题 test_pub为指针
 	//ADRC_log.x1 = 0.88;
 	ADRC_log.timestamp = now;
+
 	ADRC_log.x1 = ADRC_data[0];
 	ADRC_log.x2 = ADRC_data[1];
 	ADRC_log.z1 = ADRC_data[2];
