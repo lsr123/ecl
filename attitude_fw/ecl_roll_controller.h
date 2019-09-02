@@ -66,6 +66,16 @@ public:
 	float control_bodyrate(const struct ECL_ControlData &ctl_data);
 	float ADRC_control(const struct ECL_ControlData &ctl_data,float a);
 	float signal_PID_control(const struct ECL_ControlData &ctl_data);
+
+
+	void R_LESO(const struct ECL_ControlData &ctl_data, float R_U, float dtime);
+	void R_NESO(const struct ECL_ControlData &ctl_data, float R_U, float dtime);
+	void R_TD(const struct ECL_ControlData &ctl_data, float dtime);
+	float R_ADRC_PD(void);
+	float R_ADRC_NLF(float dtime);
+	float R_fhan(float x1,float x2,float r,float h);
+	float R_fal(float e,float alpha,float delta);
+	float sign(float x);
 };
 
 #endif // ECL_ROLL_CONTROLLER_H

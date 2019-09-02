@@ -196,6 +196,7 @@ float ECL_PitchController::ADRC_control(const struct ECL_ControlData &ctl_data, 
 	ADRC_log.z1 = ADRC_data[2];
 	ADRC_log.z2 = ADRC_data[3];
 	ADRC_log.z3 = ADRC_data[4];
+	//ADRC_log.z1_roll = 10.0f;
 	orb_publish(ORB_ID(ADRC), ADRC_sub, &ADRC_log);      //发布数据
 	
 	//warnx("ADRC_data[0] = %.4f,ADRC_data[2] = %.4f",(double)ADRC_log.x1,(double)ADRC_log.z1);
